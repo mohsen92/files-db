@@ -1,0 +1,10 @@
+type File {
+    id: String!
+    fileName: String!
+    contentType: String!
+}
+
+# Root
+type Query {
+    findFileMetadata(fileId: String!): File
+}

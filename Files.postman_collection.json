@@ -1,0 +1,173 @@
+{
+	"info": {
+		"_postman_id": "8a91519d-a261-4624-9b49-e6fa899f3d4b",
+		"name": "Files",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "3086004"
+	},
+	"item": [
+		{
+			"name": "Create Space",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"stc-assessments\",\r\n    \"groupId\": \"48be21f2-652b-4c11-bd4c-abe4970427b5\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/spaces",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"spaces"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create Folder",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"backend\",\r\n    \"spaceId\": \"48be21f2-652b-4c11-bd4c-abe4970427b5\",\r\n    \"userEmail\": \"backend@stc.com\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/folders",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"folders"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Create File",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "file",
+							"type": "file",
+							"src": "/C:/Users/ahmed/Downloads/Ahmed Mohsen.pdf"
+						},
+						{
+							"key": "userEmail",
+							"value": "backend@stc.com",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8080/api/v1/folders/48be21f2-652b-4c11-bd4c-abe4970427b5/files",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"folders",
+						"48be21f2-652b-4c11-bd4c-abe4970427b5",
+						"files"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "download file",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/files/fe9fb904-1547-42d7-96f4-1b6fddbf3a07",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						"fe9fb904-1547-42d7-96f4-1b6fddbf3a07"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get file metadata",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "localhost:8080/api/v1/files/fe9fb904-1547-42d7-96f4-1b6fddbf3a07/metadata",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"api",
+						"v1",
+						"files",
+						"fe9fb904-1547-42d7-96f4-1b6fddbf3a07",
+						"metadata"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "get file metadata graphQL",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "graphql",
+					"graphql": {
+						"query": "query MyQuery {\r\n  findFileMetadata(fileId: \"fe9fb904-1547-42d7-96f4-1b6fddbf3a07\") {\r\n    id\r\n    fileName\r\n    contentType\r\n  }\r\n}",
+						"variables": ""
+					}
+				},
+				"url": {
+					"raw": "localhost:8080/graphql",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"graphql"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
